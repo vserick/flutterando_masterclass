@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 
-class MockupExpenses extends StatelessWidget {
+class MockupExpenses extends Widget {
   const MockupExpenses({super.key});
+
+  @override
+  Element createElement() {
+    return MockupExpensesElement(this);
+  }
+}
+
+class MockupExpensesElement extends ComponentElement {
+  MockupExpensesElement(super.widget);
+
   final primarycolor = const Color.fromARGB(255, 94, 92, 229);
   final primaryTextColor = Colors.white;
   final secondaryTextColor = const Color.fromARGB(255, 117, 117, 121);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build() {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
@@ -32,8 +42,8 @@ class MockupExpenses extends StatelessWidget {
     const spacingLogo = (sizeLogo / 100) * 5;
     return Center(
       child: SizedBox(
-        height: sizeLogo + spacingLogo,
-        width: sizeLogo + spacingLogo,
+        height: sizeLogo,
+        width: sizeLogo,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -45,11 +55,38 @@ class MockupExpenses extends StatelessWidget {
                   width: sizeLogo / 2,
                   decoration: BoxDecoration(
                     color: primarycolor,
-                    borderRadius: BorderRadius.circular(100),
+                    borderRadius: BorderRadius.circular(sizeLogo / 2),
                   ),
                 ),
+                // Container(
+                //   height: spacingLogo,
+                // ),
                 Container(
-                  height: spacingLogo,
+                  height: sizeLogo / 2,
+                  width: sizeLogo / 2,
+                  decoration: BoxDecoration(
+                    color: primarycolor,
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(sizeLogo / 2),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            // Container(
+            //   width: spacingLogo,
+            // ),
+            Column(
+              children: [
+                Container(
+                  height: sizeLogo / 2,
+                  width: sizeLogo / 2,
+                  decoration: BoxDecoration(
+                    color: primarycolor,
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(sizeLogo / 2),
+                    ),
+                  ),
                 ),
                 Container(
                   height: sizeLogo / 2,
@@ -57,25 +94,11 @@ class MockupExpenses extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: primarycolor,
                     borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(100),
+                      bottomLeft: Radius.circular(sizeLogo / 2),
                     ),
                   ),
                 ),
               ],
-            ),
-            Container(
-              width: spacingLogo,
-            ),
-            Container(
-              height: sizeLogo + spacingLogo,
-              width: sizeLogo / 2,
-              decoration: BoxDecoration(
-                color: primarycolor,
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(100),
-                  topRight: Radius.circular(100),
-                ),
-              ),
             ),
           ],
         ),

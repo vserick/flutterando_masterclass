@@ -11,11 +11,20 @@ void main() {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends Widget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Element createElement() {
+    return MyAppElement(this);
+  }
+}
+
+class MyAppElement extends ComponentElement {
+  MyAppElement(super.widget);
+
+  @override
+  Widget build() {
     return const MaterialApp(
         title: 'Mockups',
         debugShowCheckedModeBanner: false,
