@@ -26,7 +26,7 @@ class MockupExpensesElement extends ComponentElement {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _buildLogo(),
+              _buildLogo(size: 180.0),
               _buildTitles(),
               _buildLoginButtons(),
               _buildSignInText(),
@@ -37,71 +37,81 @@ class MockupExpensesElement extends ComponentElement {
     );
   }
 
-  Widget _buildLogo() {
-    const sizeLogo = 150.0;
-    const spacingLogo = (sizeLogo / 100) * 5;
+  Widget _buildLogo({required double size}) {
+    final widthQuadranteSuperiorEsq = size / 2;
+    final heightQudranteSuperiorEsq = size / 2;
+
+    final spacingHorizontal = (size / 100) * 5;
+
+    final widthQuadranteInferiorEsq = size / 2;
+    final heightQuadranteInferiorEsq = size / 2;
+
+    final spacingVertical = (size / 100) * 5;
+
+    final widthQuadranteSuperiorDir = (size / 2);
+    final heightQuadranteSuperiorDir = (size / 2) + (spacingHorizontal / 2);
+
+    final widthQuadranteInferiorDir = size / 2;
+    final heightQuadranteInferiorDir = size / 2 + (spacingHorizontal / 2);
+
     return Center(
-      child: SizedBox(
-        height: sizeLogo,
-        width: sizeLogo,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: sizeLogo / 2,
-                  width: sizeLogo / 2,
-                  decoration: BoxDecoration(
-                    color: primarycolor,
-                    borderRadius: BorderRadius.circular(sizeLogo / 2),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: heightQudranteSuperiorEsq,
+                width: widthQuadranteSuperiorEsq,
+                decoration: BoxDecoration(
+                  color: primarycolor,
+                  borderRadius: BorderRadius.circular(size / 2),
+                ),
+              ),
+              Container(
+                height: spacingHorizontal,
+              ),
+              Container(
+                height: heightQuadranteInferiorEsq,
+                width: widthQuadranteInferiorEsq,
+                decoration: BoxDecoration(
+                  color: primarycolor,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(size / 2),
                   ),
                 ),
-                // Container(
-                //   height: spacingLogo,
-                // ),
-                Container(
-                  height: sizeLogo / 2,
-                  width: sizeLogo / 2,
-                  decoration: BoxDecoration(
-                    color: primarycolor,
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(sizeLogo / 2),
-                    ),
+              ),
+            ],
+          ),
+          Container(
+            width: spacingVertical,
+          ),
+          Column(
+            children: [
+              Container(
+                height: heightQuadranteSuperiorDir,
+                width: widthQuadranteSuperiorDir,
+                decoration: BoxDecoration(
+                  color: primarycolor,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(size / 2),
                   ),
                 ),
-              ],
-            ),
-            // Container(
-            //   width: spacingLogo,
-            // ),
-            Column(
-              children: [
-                Container(
-                  height: sizeLogo / 2,
-                  width: sizeLogo / 2,
-                  decoration: BoxDecoration(
-                    color: primarycolor,
-                    borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(sizeLogo / 2),
-                    ),
+              ),
+              Container(
+                height: heightQuadranteInferiorDir,
+                width: widthQuadranteInferiorDir,
+                decoration: BoxDecoration(
+                  color: primarycolor,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(size / 2),
                   ),
                 ),
-                Container(
-                  height: sizeLogo / 2,
-                  width: sizeLogo / 2,
-                  decoration: BoxDecoration(
-                    color: primarycolor,
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(sizeLogo / 2),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
